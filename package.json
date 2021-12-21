@@ -1,19 +1,27 @@
 {
   "name": "cli-rest-ingestor",
   "version": "1.0.0",
-  "description": "CLI Tool to ingest SnappyURL (my URL shortener REST API)",
+  "description": "CLI Tool to consume a REST API",
   "main": "app.js",
   "preferGlobal": true,
   "bin": "./commands.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node api/server",
+    "dev": "nodemon api/server"
   },
-  "author": "Sandipan Das <sandip2224>",
-  "license": "ISC",
+  "author": "sandip2224 <sandipan2224@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.24.0",
     "chalk": "^5.0.0",
+    "colors": "^1.4.0",
     "commander": "^8.3.0",
-    "express": "^4.17.2"
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
