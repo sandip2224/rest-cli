@@ -7,6 +7,10 @@ const todoSchema = mongoose.Schema({
         required: true,
         trim: true,
         maxLength: [30, 'Please restrict task length to 30 characters']
+    },
+    completed:{
+        type: Boolean,
+        default: false
     }
 },
 { timestamps: true }
