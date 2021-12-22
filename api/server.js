@@ -1,5 +1,6 @@
 const express = require("express")
 const colors = require("colors")
+const cors = require('cors')
 require("dotenv").config({ path: "./.env" })
 
 const connectDB = require('./config/db')
@@ -8,7 +9,8 @@ const app = express()
 // Connect to database
 connectDB(process.env.NODE_ENV)
 
-app.use(express.urlencoded({extended: false}))
+app.use(cors())
+app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
 // Mounting routes
@@ -22,4 +24,4 @@ process.on("unhandledRejection", (err, promise) => {
     server.close(() => process.exit(1));
 })
 
-module.exports=server
+module.exports = server

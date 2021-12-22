@@ -1,10 +1,10 @@
 const express = require('express')
-const mongoose=require('mongoose')
+const mongoose = require('mongoose')
 const router = express.Router()
 
-const todoModel=require('../models/Todo')
+const todoModel = require('../models/Todo')
 
-router.get('/todos', async (req, res)=>{
+router.get('/todos', async (req, res) => {
     try {
         const todos = await todoModel.find()
         res.status(200).json({
@@ -31,7 +31,7 @@ router.get('/todos', async (req, res)=>{
     }
 })
 
-router.get('/todo/:id', async (req, res)=>{
+router.get('/todo/:id', async (req, res) => {
     const id = req.params.id
     if (!mongoose.isValidObjectId(id)) {
         return res.status(422).json({
@@ -64,12 +64,12 @@ router.get('/todo/:id', async (req, res)=>{
     }
 })
 
-router.post('/todo', async (req, res)=>{
+router.post('/todo', async (req, res) => {
     try {
         const newTodo = new todoModel({
             task: req.body.task
         })
-        const doc=await newTodo.save()
+        const doc = await newTodo.save()
         res.status(201).json({
             message: 'Task added successfully!!',
             createdTodo: {
@@ -91,7 +91,7 @@ router.post('/todo', async (req, res)=>{
     }
 })
 
-router.patch('/todo/:id', async (req, res)=>{
+router.patch('/todo/:id', async (req, res) => {
     const id = req.params.id
     if (!mongoose.isValidObjectId(id)) {
         return res.status(422).json({
@@ -123,7 +123,7 @@ router.patch('/todo/:id', async (req, res)=>{
     }
 })
 
-router.delete('/todo/:id', async (req, res)=>{
+router.delete('/todo/:id', async (req, res) => {
     const id = req.params.id
     if (!mongoose.isValidObjectId(id)) {
         return res.status(422).json({

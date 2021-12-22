@@ -1,4 +1,4 @@
-const getTodo = [
+const getTodoQ = [
     {
         type: 'input',
         name: 'id',
@@ -6,7 +6,7 @@ const getTodo = [
     }
 ]
 
-const postTodo = [
+const postTodoQ = [
     {
         type: 'input',
         name: 'task',
@@ -14,7 +14,7 @@ const postTodo = [
     }
 ]
 
-const updateTodo = [
+const updateTodoQ = [
     {
         type: 'input',
         name: 'id',
@@ -28,8 +28,8 @@ const updateTodo = [
     }
 ]
 
-const deleteTodo = getTodo
+const deleteTodoQ = getTodoQ
 
 module.exports = {
-    getTodo, postTodo, updateTodo, deleteTodo
+    getTodoQ, postTodoQ, updateTodoQ, deleteTodoQ
 }

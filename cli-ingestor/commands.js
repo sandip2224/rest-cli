@@ -2,6 +2,9 @@ const program = require('commander')
 const chalk = require('chalk')
 const { prompt } = require('inquirer')
 
+const { getTodoQ, postTodoQ, updateTodoQ, deleteTodoQ } = require('../cli-ingestor/utils/QA')
+const { getTodo } = require('./app')
+
 program
     .version('1.0.0')
     .alias('v')
@@ -17,10 +20,11 @@ program
 
 program
     .command('get')
+    .alias('g')
     .description('🚀 GET a specific todo from database')
-    .option('--id <type>', 'Enter todo id')
     .action(async (options) => {
-        console.log(options)
+        const res = await prompt(getTodoQ)
+        getTodo(res)
     })
 
 program
@@ -28,7 +32,6 @@ program
     .description('🚀 CREATE a new todo')
     .option('--task <type>', 'Enter task description')
     .action(async (options) => {
-        console.log(options)
     })
 
 program
