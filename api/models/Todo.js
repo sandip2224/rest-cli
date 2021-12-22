@@ -4,16 +4,15 @@ const mongoose = require('mongoose')
 const todoSchema = mongoose.Schema({
     task: {
         type: String,
-        required: true,
+        required: [true, 'Please enter a valid task'],
         trim: true,
-        maxLength: [30, 'Please restrict task length to 30 characters']
+        maxLength: [30, 'Please restrict task length to less than 30 characters']
     },
     completed:{
         type: Boolean,
         default: false
     }
-},
-{ timestamps: true }
+},{ timestamps: true }
 )
 
 module.exports = mongoose.model('todoModel', todoSchema)

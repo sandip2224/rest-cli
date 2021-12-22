@@ -8,6 +8,7 @@ const app = express()
 // Connect to database
 connectDB()
 
+app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 
 // Mounting routes

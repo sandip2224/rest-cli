@@ -1,12 +1,6 @@
 const express = require('express')
+const mongoose=require('mongoose')
 const router = express.Router()
-
-const errorMsg=(err)=>{
-    res.status(500).json({
-        message: 'Unexpected error occurred!!',
-        error: err
-    })
-}
 
 const todoModel=require('../models/Todo')
 
@@ -15,11 +9,12 @@ router.get('/todos', async (req, res)=>{
         const todos = await todoModel.find()
         res.status(200).json({
             count: todos.length,
-            todos: todos.map((todo) => {
+            tasks: todos.map(todo => {
                 return {
+                    todoId: todo._id,
                     task: todo.task,
                     completed: todo.completed,
-                    todoId: todo._id,
+                    createdAt: todo.createdAt,
                     request: {
                         type: 'GET',
                         url: 'http://localhost:3000/api/todo/' + todo._id
@@ -29,7 +24,10 @@ router.get('/todos', async (req, res)=>{
         })
     }
     catch (err) {
-        errorMsg(err)
+        res.status(500).json({
+            message: 'Unexpected error occurred!!',
+            error: err
+        })
     }
 })
 
@@ -48,9 +46,10 @@ router.get('/todo/:id', async (req, res)=>{
             })
         }
         res.status(200).json({
+            todoId: todo._id,
             task: todo.task,
             completed: todo.completed,
-            todoId: todo._id,
+            createdAt: todo.createdAt,
             request: {
                 type: 'GET',
                 url: 'http://localhost:3000/api/todo/' + todo._id
@@ -58,7 +57,10 @@ router.get('/todo/:id', async (req, res)=>{
         })
     }
     catch (err) {
-        errorMsg(err)
+        res.status(500).json({
+            message: 'Unexpected error occurred!!',
+            error: err
+        })
     }
 })
 
@@ -67,13 +69,13 @@ router.post('/todo', async (req, res)=>{
         const newTodo = new todoModel({
             task: req.body.task
         })
-        const doc = await newTodo.save()
+        const doc=await newTodo.save()
         res.status(201).json({
             message: 'Task added successfully!!',
             createdTodo: {
+                todoId: doc._id,
                 task: doc.task,
                 completed: doc.completed,
-                todoId: doc._id,
                 request: {
                     type: 'GET',
                     url: 'http://localhost:3000/api/todo/' + doc._id
@@ -82,7 +84,10 @@ router.post('/todo', async (req, res)=>{
         })
     }
     catch (err) {
-        errorMsg(err)
+        res.status(500).json({
+            message: 'Unexpected error occurred!!',
+            error: err
+        })
     }
 })
 
@@ -96,24 +101,20 @@ router.patch('/todo/:id', async (req, res)=>{
             })
         }
 
-        // Todo exists, now we try updation
         const updatedTodo = await todoModel.updateOne({ _id: id }, req.body)
-        if (updatedUser.modifiedCount === 0) {
-            return res.status(200).json({
-                message: 'Todo details remain unchanged!!',
-                updatedTodo
-            })
-        }
         res.status(200).json({
             message: 'Todo details updated successfully!!',
             request: {
                 type: 'GET',
-                url: 'http://localhost:3000/api/v1/users/' + id
+                url: 'http://localhost:3000/api/todo/' + id
             }
         })
     }
     catch (err) {
-        errorMsg(err)
+        res.status(500).json({
+            message: 'Unexpected error occurred!!',
+            error: err
+        })
     }
 })
 
@@ -137,13 +138,16 @@ router.delete('/todo/:id', async (req, res)=>{
                 type: 'POST',
                 url: 'http://localhost:3000/api/todo',
                 body: {
-                    task: String
+                    task: "String"
                 }
             }
         })
     }
     catch (err) {
-        errorMsg(err)
+        res.status(500).json({
+            message: 'Unexpected error occurred!!',
+            error: err
+        })
     }
 })
 
