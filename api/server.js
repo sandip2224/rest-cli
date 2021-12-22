@@ -6,7 +6,7 @@ const connectDB = require('./config/db')
 const app = express()
 
 // Connect to database
-connectDB()
+connectDB(process.env.NODE_ENV)
 
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
@@ -21,3 +21,5 @@ process.on("unhandledRejection", (err, promise) => {
     console.log(`Error: ${err.message}`.red);
     server.close(() => process.exit(1));
 })
+
+module.exports=server

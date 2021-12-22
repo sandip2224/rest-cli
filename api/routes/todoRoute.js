@@ -93,6 +93,11 @@ router.post('/todo', async (req, res)=>{
 
 router.patch('/todo/:id', async (req, res)=>{
     const id = req.params.id
+    if (!mongoose.isValidObjectId(id)) {
+        return res.status(422).json({
+            message: 'Task ID is not valid!!'
+        })
+    }
     try {
         const todo = await todoModel.findById(id)
         if (!todo) {

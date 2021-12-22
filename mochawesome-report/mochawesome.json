@@ -1,0 +1,389 @@
+{
+  "stats": {
+    "suites": 6,
+    "tests": 10,
+    "passes": 10,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-12-22T04:47:27.688Z",
+    "end": "2021-12-22T04:47:35.545Z",
+    "duration": 7857,
+    "testsRegistered": 10,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "2313f477-0972-4e3d-b3c6-44958a5eedd0",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b8a5d825-1eb7-494a-9fb5-9e12735391e9",
+          "title": "Books",
+          "fullFile": "C:\\Users\\User\\Desktop\\CLI-REST-Ingestor\\test\\todoRoute.test.js",
+          "file": "\\test\\todoRoute.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Books\"",
+              "fullTitle": "Books \"before each\" hook in \"Books\"",
+              "timedOut": false,
+              "duration": 247,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//Before each test we empty the database\n       todoModel.deleteMany({}, (err) => {\n           done()\n       })",
+              "err": {},
+              "uuid": "486e960c-ce0f-4996-9087-39c81d6b9636",
+              "parentUUID": "b8a5d825-1eb7-494a-9fb5-9e12735391e9",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "a339c208-6dfb-4395-b0e9-7a13a1531f2a",
+              "title": "/GET all todos",
+              "fullFile": "C:\\Users\\User\\Desktop\\CLI-REST-Ingestor\\test\\todoRoute.test.js",
+              "file": "\\test\\todoRoute.test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "It should GET all the todos",
+                  "fullTitle": "Books /GET all todos It should GET all the todos",
+                  "timedOut": false,
+                  "duration": 342,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "chai.request(server)\n    .get('/api/todos')\n    .end((err, res) => {\n            res.should.have.status(200)\n            res.body.should.have.property('count')\n            res.body.tasks.should.be.a('array')\n        done()\n    })",
+                  "err": {},
+                  "uuid": "d7abef2d-af64-442a-9793-3a5c43ecb594",
+                  "parentUUID": "a339c208-6dfb-4395-b0e9-7a13a1531f2a",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "d7abef2d-af64-442a-9793-3a5c43ecb594"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 342,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 10000
+            },
+            {
+              "uuid": "93e86a29-4a6c-4e35-988b-0d21d3104c1f",
+              "title": "/GET a todo",
+              "fullFile": "C:\\Users\\User\\Desktop\\CLI-REST-Ingestor\\test\\todoRoute.test.js",
+              "file": "\\test\\todoRoute.test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "It should GET a single todo",
+                  "fullTitle": "Books /GET a todo It should GET a single todo",
+                  "timedOut": false,
+                  "duration": 7,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "chai.request(server)\n    .get('/api/todo/123')\n    .end((err, res) => {\n            res.should.have.status(422)\n            res.body.message.should.be.a('string')\n            res.body.message.should.equal('Task ID is not valid!!')\n        done()\n    })",
+                  "err": {},
+                  "uuid": "0e3095cc-d106-4be9-9812-0ed6e73f1d6f",
+                  "parentUUID": "93e86a29-4a6c-4e35-988b-0d21d3104c1f",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "It should not GET a non-existent todo",
+                  "fullTitle": "Books /GET a todo It should not GET a non-existent todo",
+                  "timedOut": false,
+                  "duration": 259,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "chai.request(server)\n    .get('/api/todo/61c29b8a096af42f58d09512')\n    .end((err, res) => {\n            res.should.have.status(404)\n            res.body.message.should.be.a('string')\n            res.body.message.should.equal('No todo found for given id!!')\n        done()\n    })",
+                  "err": {},
+                  "uuid": "bfe3d10c-2948-45f7-af21-f9b743ca6c06",
+                  "parentUUID": "93e86a29-4a6c-4e35-988b-0d21d3104c1f",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "0e3095cc-d106-4be9-9812-0ed6e73f1d6f",
+                "bfe3d10c-2948-45f7-af21-f9b743ca6c06"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 266,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 10000
+            },
+            {
+              "uuid": "62991173-8614-487f-b626-b7ddec41705e",
+              "title": "/POST a new todo",
+              "fullFile": "C:\\Users\\User\\Desktop\\CLI-REST-Ingestor\\test\\todoRoute.test.js",
+              "file": "\\test\\todoRoute.test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "It should not POST a todo without a defined task field",
+                  "fullTitle": "Books /POST a new todo It should not POST a todo without a defined task field",
+                  "timedOut": false,
+                  "duration": 92,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "let todo = {\n    task: ''\n}\n        chai.request(server)\n.post('/api/todo')\n.send(todo)\n.end((err, res) => {\n        res.should.have.status(500)\n        res.body.should.be.a('object')\n        res.body.should.have.property('message')\n        res.body.should.have.property('error')\n    done()\n})",
+                  "err": {},
+                  "uuid": "52e677dc-fac3-4f86-8997-0c05afdba2f4",
+                  "parentUUID": "62991173-8614-487f-b626-b7ddec41705e",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "It should not POST a todo with a task field more than 30 characters",
+                  "fullTitle": "Books /POST a new todo It should not POST a todo with a task field more than 30 characters",
+                  "timedOut": false,
+                  "duration": 8,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "let todo = {\n    task: 'abcdabcdabcdabcdabcdabcdabcdabcd'\n}\n        chai.request(server)\n.post('/api/todo')\n.send(todo)\n.end((err, res) => {\n        res.should.have.status(500)\n        res.body.should.be.a('object')\n        res.body.should.have.property('message')\n        res.body.should.have.property('error')\n    done()\n})",
+                  "err": {},
+                  "uuid": "fca7de1c-cedf-4f75-b84a-c305e15b19b8",
+                  "parentUUID": "62991173-8614-487f-b626-b7ddec41705e",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "It should POST a todo with a valid task field",
+                  "fullTitle": "Books /POST a new todo It should POST a todo with a valid task field",
+                  "timedOut": false,
+                  "duration": 283,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "let todo = {\n    task: 'Test the api!!'\n}\n        chai.request(server)\n.post('/api/todo')\n.send(todo)\n.end((err, res) => {\n        res.should.have.status(201)\n        res.body.should.be.a('object')\n        res.body.message.should.equal('Task added successfully!!')\n        res.body.createdTodo.should.be.a('object')\n    done()\n})",
+                  "err": {},
+                  "uuid": "6d64ddac-21fb-4235-b057-de1af0c33504",
+                  "parentUUID": "62991173-8614-487f-b626-b7ddec41705e",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "52e677dc-fac3-4f86-8997-0c05afdba2f4",
+                "fca7de1c-cedf-4f75-b84a-c305e15b19b8",
+                "6d64ddac-21fb-4235-b057-de1af0c33504"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 383,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 10000
+            },
+            {
+              "uuid": "ea7edbe1-5313-4891-9497-43bdddb177e8",
+              "title": "/PATCH an existing todo",
+              "fullFile": "C:\\Users\\User\\Desktop\\CLI-REST-Ingestor\\test\\todoRoute.test.js",
+              "file": "\\test\\todoRoute.test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "It should not process an invalid todo id",
+                  "fullTitle": "Books /PATCH an existing todo It should not process an invalid todo id",
+                  "timedOut": false,
+                  "duration": 9,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "let todo = {\n    completed: 'true'\n}\n        chai.request(server)\n.patch('/api/todo/123')\n.send(todo)\n.end((err, res) => {\n        res.should.have.status(422)\n        res.body.should.be.a('object')\n        res.body.should.have.property('message')\n        res.body.message.should.equal('Task ID is not valid!!')\n    done()\n})",
+                  "err": {},
+                  "uuid": "c9a82549-6067-4bc7-8af8-7c4ff74fa7ab",
+                  "parentUUID": "ea7edbe1-5313-4891-9497-43bdddb177e8",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "It should not PATCH an undefined todo id",
+                  "fullTitle": "Books /PATCH an existing todo It should not PATCH an undefined todo id",
+                  "timedOut": false,
+                  "duration": 270,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "let todo = {\n    completed: 'true'\n}\n        chai.request(server)\n.patch('/api/todo/61c29b8a096af42f58d09512')\n.send(todo)\n.end((err, res) => {\n        res.should.have.status(404)\n        res.body.should.be.a('object')\n        res.body.should.have.property('message')\n        res.body.message.should.equal('No todo found for given id!!')\n    done()\n})",
+                  "err": {},
+                  "uuid": "1aeaeb16-4841-4d7a-8c21-d8512133e9a9",
+                  "parentUUID": "ea7edbe1-5313-4891-9497-43bdddb177e8",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "c9a82549-6067-4bc7-8af8-7c4ff74fa7ab",
+                "1aeaeb16-4841-4d7a-8c21-d8512133e9a9"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 279,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 10000
+            },
+            {
+              "uuid": "33d4a0d0-027b-4b10-9e9b-6d03fe458c6f",
+              "title": "/DELETE an existing todo",
+              "fullFile": "C:\\Users\\User\\Desktop\\CLI-REST-Ingestor\\test\\todoRoute.test.js",
+              "file": "\\test\\todoRoute.test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "It should not process an invalid todo id",
+                  "fullTitle": "Books /DELETE an existing todo It should not process an invalid todo id",
+                  "timedOut": false,
+                  "duration": 5,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "chai.request(server)\n    .delete('/api/todo/123')\n    .end((err, res) => {\n            res.should.have.status(422)\n            res.body.should.be.a('object')\n            res.body.should.have.property('message')\n            res.body.message.should.equal('Todo ID is not valid!!')\n        done()\n    })",
+                  "err": {},
+                  "uuid": "92f76d3e-66fd-47ec-a821-72a79c909d5e",
+                  "parentUUID": "33d4a0d0-027b-4b10-9e9b-6d03fe458c6f",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "It should not DELETE an undefined todo id",
+                  "fullTitle": "Books /DELETE an existing todo It should not DELETE an undefined todo id",
+                  "timedOut": false,
+                  "duration": 260,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "chai.request(server)\n    .delete('/api/todo/61c29b8a096af42f58d09512')\n    .end((err, res) => {\n            res.should.have.status(404)\n            res.body.should.be.a('object')\n            res.body.should.have.property('message')\n            res.body.message.should.equal('Todo details not found!!')\n        done()\n    })",
+                  "err": {},
+                  "uuid": "5467e5f7-a835-4854-a688-9da44c007b16",
+                  "parentUUID": "33d4a0d0-027b-4b10-9e9b-6d03fe458c6f",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "92f76d3e-66fd-47ec-a821-72a79c909d5e",
+                "5467e5f7-a835-4854-a688-9da44c007b16"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 265,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 10000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 10000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 10000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "9.1.3"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.0.1"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.0.1"
+    }
+  }
+}

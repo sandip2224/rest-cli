@@ -6,9 +6,9 @@
   "preferGlobal": true,
   "bin": "./commands.js",
   "scripts": {
-    "test": "mocha --timeout=10000",
+    "test": "mocha --timeout 10000 --reporter mochawesome --exit",
     "start": "node api/server",
-    "dev": "nodemon api/server"
+    "dev": "SET NODE_ENV=dev && nodemon api/server"
   },
   "author": "sandip2224 <sandipan2224@gmail.com>",
   "license": "MIT",
@@ -25,6 +25,7 @@
     "chai": "^4.3.4",
     "chai-http": "^4.3.0",
     "mocha": "^9.1.3",
+    "mochawesome": "^7.0.1",
     "nodemon": "^2.0.15"
   }
 }
