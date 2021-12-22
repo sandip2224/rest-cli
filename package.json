@@ -6,7 +6,7 @@
   "preferGlobal": true,
   "bin": "./commands.js",
   "scripts": {
-    "test": "mocha --timeout 10000 --reporter mochawesome --exit",
+    "test": "mocha --timeout=10000 --reporter mochawesome --exit",
     "start": "node api/server",
     "dev": "SET NODE_ENV=dev && nodemon api/server"
   },
