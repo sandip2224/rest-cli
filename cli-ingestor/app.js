@@ -7,8 +7,10 @@ const axios = require('axios')
 require('dotenv').config({ path: './.env' })
 const todoModel = require('../api/models/Todo')
 
+const baseUrl = 'https://todoapi64.herokuapp.com'
+
 const getTodos = async () => {
-    let url = "https://todoapi64.herokuapp.com/api/todos"
+    let url = `${baseUrl}/api/todos`
     try {
         const res = await axios.get(url)
         console.log(res.data)
@@ -19,7 +21,7 @@ const getTodos = async () => {
 }
 
 const getTodo = async (args) => {
-    let url = "https://todoapi64.herokuapp.com/api/todo/" + args.id
+    let url = `${baseUrl}/api/todo/` + args.id
     try {
         const res = await axios.get(url)
         console.log(res.data)
@@ -29,6 +31,39 @@ const getTodo = async (args) => {
     }
 }
 
+const postTodo = async (args) => {
+    let url = `${baseUrl}/api/todo`
+    try {
+        const res = await axios.post(url, args)
+        console.log(res.data)
+    }
+    catch (err) {
+        console.log(err.response.data)
+    }
+}
+
+const updateTodo = async (args) => {
+    let url = `${baseUrl}/api/todo/` + args.id
+    try {
+        const res = await axios.patch(url, args)
+        console.log(res.data)
+    }
+    catch (err) {
+        console.log(err.response.data)
+    }
+}
+
+const deleteTodo = async (args) => {
+    let url = `${baseUrl}/api/todo/` + args.id
+    try {
+        const res = await axios.delete(url)
+        console.log(res.data)
+    }
+    catch (err) {
+        console.log(err.response.data)
+    }
+}
+
 module.exports = {
-    getTodos, getTodo
+    getTodos, getTodo, postTodo, updateTodo, deleteTodo
 }

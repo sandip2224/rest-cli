@@ -3,7 +3,7 @@ const chalk = require('chalk')
 const { prompt } = require('inquirer')
 
 const { getTodoQ, postTodoQ, updateTodoQ, deleteTodoQ } = require('../cli-ingestor/utils/QA')
-const { getTodos, getTodo } = require('./app')
+const { getTodos, getTodo, postTodo, updateTodo, deleteTodo } = require('./app')
 
 program
     .version('1.0.0')
@@ -28,18 +28,30 @@ program
     })
 
 program
-    .command('post')
+    .command('create')
+    .alias('c')
     .description('🚀 CREATE a new todo')
-    .option('--task <type>', 'Enter task description')
     .action(async (options) => {
+        const res = await prompt(postTodoQ)
+        postTodo(res)
     })
 
 program
-    .command('patch')
+    .command('update')
+    .alias('u')
     .description('🚀 UPDATE an existing todo')
-    .option('--task <type>', 'Enter task description')
     .action(async (options) => {
-        console.log(options)
+        const res = await prompt(updateTodoQ)
+        updateTodo(res)
+    })
+
+program
+    .command('delete')
+    .alias('d')
+    .description('🚀 DELETE an existing todo')
+    .action(async (options) => {
+        const res = await prompt(deleteTodoQ)
+        deleteTodo(res)
     })
 
 program.parse()

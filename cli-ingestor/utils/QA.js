@@ -22,7 +22,7 @@ const updateTodoQ = [
     },
     {
         type: 'input',
-        name: 'task',
+        name: 'completed',
         message: 'Enter completion status (true/false):',
         default: 'false'
     }
