@@ -1,6 +1,7 @@
 const express = require("express")
 const colors = require("colors")
 const cors = require('cors')
+const morgan = require('morgan')
 require("dotenv").config({ path: "./.env" })
 
 const connectDB = require('./config/db')
@@ -12,6 +13,10 @@ connectDB(process.env.NODE_ENV)
 app.use(cors())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
+
+if (process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'))
+}
 
 // Mounting routes
 app.use('/api', require('./routes/todoRoute'))
