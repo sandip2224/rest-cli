@@ -10,11 +10,15 @@ const app = express()
 connectDB(process.env.NODE_ENV)
 
 app.use(cors())
-app.use(express.urlencoded({ extended: false })) 
+app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
 // Mounting routes
 app.use('/api', require('./routes/todoRoute'))
+
+app.get('/', (req, res) => {
+    res.json({ message: 'CORS-enabled API up and running!!' })
+})
 
 const server = app.listen(process.env.PORT || 3000, console.log(`API running on port ${process.env.PORT || 3000}`.green.bold))
 
