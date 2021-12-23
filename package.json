@@ -7,7 +7,7 @@
   "bin": "./cli-ingestor/commands.js",
   "scripts": {
     "test": "mocha --timeout=10000 --reporter mochawesome --exit",
-    "start": "node api/server",
+    "start": "SET NODE_ENV=prod && node api/server",
     "dev": "SET NODE_ENV=dev && nodemon api/server"
   },
   "author": "sandip2224 <sandipan2224@gmail.com>",

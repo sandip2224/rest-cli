@@ -10,7 +10,7 @@ const app = express()
 connectDB(process.env.NODE_ENV)
 
 app.use(cors())
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: false })) 
 app.use(express.json())
 
 // Mounting routes
