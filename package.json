@@ -7,8 +7,8 @@
   "bin": "./cli-ingestor/commands.js",
   "scripts": {
     "test": "mocha --timeout=10000 --reporter mochawesome --exit",
-    "start": "SET NODE_ENV=prod && node api/server",
-    "dev": "SET NODE_ENV=dev && nodemon api/server"
+    "start": "cross-env NODE_ENV=production node api/server",
+    "dev": "cross-env NODE_ENV=development nodemon api/server"
   },
   "author": "sandip2224 <sandipan2224@gmail.com>",
   "license": "MIT",
@@ -27,6 +27,7 @@
   "devDependencies": {
     "chai": "^4.3.4",
     "chai-http": "^4.3.0",
+    "cross-env": "^7.0.3",
     "mocha": "^9.1.3",
     "mochawesome": "^7.0.1",
     "nodemon": "^2.0.15"
