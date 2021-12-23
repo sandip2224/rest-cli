@@ -4,6 +4,9 @@ const router = express.Router()
 
 const todoModel = require('../models/Todo')
 
+const baseUrl = 'https://todoapi64.herokuapp.com'
+// const baseUrl = 'http://localhost:3000'
+
 router.get('/todos', async (req, res) => {
     try {
         const todos = await todoModel.find()
@@ -15,10 +18,7 @@ router.get('/todos', async (req, res) => {
                     task: todo.task,
                     completed: todo.completed,
                     createdAt: todo.createdAt,
-                    request: {
-                        type: 'GET',
-                        url: 'http://localhost:3000/api/todo/' + todo._id
-                    }
+                    requestUrl: `GET ${baseUrl}/api/todo/` + todo._id
                 }
             })
         })
@@ -50,10 +50,7 @@ router.get('/todo/:id', async (req, res) => {
             task: todo.task,
             completed: todo.completed,
             createdAt: todo.createdAt,
-            request: {
-                type: 'GET',
-                url: 'http://localhost:3000/api/todo/' + todo._id
-            }
+            requestUrl: `GET ${baseUrl}/api/todo/` + todo._id
         })
     }
     catch (err) {
@@ -76,10 +73,7 @@ router.post('/todo', async (req, res) => {
                 todoId: doc._id,
                 task: doc.task,
                 completed: doc.completed,
-                request: {
-                    type: 'GET',
-                    url: 'http://localhost:3000/api/todo/' + doc._id
-                }
+                requestUrl: `GET ${baseUrl}/api/todo/` + doc._id
             }
         })
     }
@@ -109,10 +103,7 @@ router.patch('/todo/:id', async (req, res) => {
         const updatedTodo = await todoModel.updateOne({ _id: id }, req.body)
         res.status(200).json({
             message: 'Todo details updated successfully!!',
-            request: {
-                type: 'GET',
-                url: 'http://localhost:3000/api/todo/' + id
-            }
+            requestUrl: `GET ${baseUrl}/api/todo/` + id
         })
     }
     catch (err) {
@@ -138,14 +129,7 @@ router.delete('/todo/:id', async (req, res) => {
             })
         }
         res.status(200).json({
-            message: 'Todo deleted successfully!!',
-            request: {
-                type: 'POST',
-                url: 'http://localhost:3000/api/todo',
-                body: {
-                    task: "String"
-                }
-            }
+            message: 'Todo deleted successfully!!'
         })
     }
     catch (err) {

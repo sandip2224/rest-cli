@@ -3,7 +3,7 @@ const chalk = require('chalk')
 const { prompt } = require('inquirer')
 
 const { getTodoQ, postTodoQ, updateTodoQ, deleteTodoQ } = require('../cli-ingestor/utils/QA')
-const { getTodo } = require('./app')
+const { getTodos, getTodo } = require('./app')
 
 program
     .version('1.0.0')
@@ -15,7 +15,7 @@ program
     .alias('gA')
     .description('🚩 GET all todos from database')
     .action(async () => {
-
+        getTodos()
     })
 
 program
