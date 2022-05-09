@@ -1,0 +1,22 @@
+func.sql
+--------
+
+CREATE OR REPLACE FUNCTION area_circle(radius NUMBER)
+RETURN NUMBER IS 
+
+pi CONSTANT NUMBER(7,3):=3.141;
+area NUMBER(7,3);
+BEGIN
+    area:=pi*radius*radius;
+    RETURN area;
+END;
+/
+
+
+call.sql
+--------
+
+BEGIN
+    dbms_output.put_line(area_circle(5));
+END;
+/
