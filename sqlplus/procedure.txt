@@ -1,8 +1,0 @@
-
-PROCEDURES
-----------
-
-CREATE OR REPLACE PROCEDURE my_proc1
-BEGIN
-   <procedure_body>
-END my_proc1;
