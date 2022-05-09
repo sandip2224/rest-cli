@@ -1,0 +1,15 @@
+
+DCL Commands
+------------
+
+1. GRANT:
+
+GRANT (SELECT/INSERT/UPDATE/DELETE/CREATE/ALTER/DROP) ON my_table TO user;
+
+2. REVOKE:
+
+REVOKE privilege_name ON my_table FROM user;
+
+
+
+

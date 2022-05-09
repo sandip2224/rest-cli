@@ -1,0 +1,61 @@
+ANCHOR TYPE
+-----------
+v_fname my_table.firstName%TYPE;
+
+CONSTANT
+--------
+v_name CONSTANT varchar2(20) DEFAULT 'Sandipan';
+
+CONDITIONALS
+------------
+
+DECLARE
+    i number(10)=&enter_number;
+BEGIN
+    i:=9;
+    IF i>10 THEN
+        dbms_output.put_line(i);
+    ELSIF i=10 THEN
+        dbms_output.put_line('Lol its 10');
+    ELSE
+        dbms_output.put_line('Oops its less');
+    END IF;
+END;
+
+SIMPLE LOOP
+-----------
+
+DECLARE
+    i number(20);
+    j number(20);
+BEGIN
+    i:=1;
+    loop
+    j:=9*i;
+    dbms_output.put_line('9 x '|| i || ' = ' || j);
+    i:=i+1;
+    IF i>10 THEN
+        EXIT;
+    END IF;
+	or
+    EXIT WHEN i>10;
+    end loop;
+END;
+
+
+WHILE LOOP
+----------
+
+WHILE condition LOOP
+  Stmt 1;
+  Stmt 2;
+  ...
+  Stmt n;
+END LOOP;
+
+FOR LOOP
+--------
+
+FOR i IN 1 .. 10 LOOP
+  dbms_output.put_line(i);
+END LOOP;

@@ -1,0 +1,26 @@
+1. CREATE:
+
+CREATE TABLE Employee (
+Emp_Name varchar(20),
+Age number(4),
+Date_Of_Birth date
+);
+
+CREATE VIEW my_view AS
+SELECT * FROM my_table;
+
+2. INSERT:
+
+INSERT INTO my_view values('Sandipan', 20, date'2022-05-12');
+
+3. UPDATE:
+
+UPDATE my_view SET column_name1=value1 WHERE condition;
+
+4. DELETE:
+
+DELETE FROM my_view WHERE condition;
+
+5. DISPLAY:
+
+SELECT * from my_view;

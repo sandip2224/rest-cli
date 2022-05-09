@@ -1,0 +1,14 @@
+TCL Commands
+------------
+
+1. COMMIT:
+
+COMMIT;
+
+2. SAVEPOINT:
+
+SAVEPOINT checkpt1;
+
+3. ROLLBACK:
+
+ROLLBACK TO checkpt1;

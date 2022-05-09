@@ -1,0 +1,21 @@
+DECLARE
+    v_name varchar2(20);
+    CURSOR cur_sandipan IS SELECT Emp_Name FROM Employee;
+BEGIN
+    OPEN cur_sandipan;
+    loop
+        FETCH cur_sandipan INTO v_name;
+        dbms_output.put_line(v_name);
+        exit when cur_sandipan%NOTFOUND;
+    end loop;
+    CLOSE cur_sandipan;
+END;
+
+DECLARE
+   CURSOR c_Sandipan IS
+   SELECT first_name, last_name FROM employees WHERE emp_id>200;
+BEGIN
+   FOR L_IDX IN cur_Sandipan LOOP
+   dbms_output.put_line(L_IDX.first_name, L_IDX.last_name);
+   END LOOP;
+END;

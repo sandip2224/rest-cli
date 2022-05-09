@@ -1,0 +1,23 @@
+INNER JOIN: Returns only common records
+
+LEFT OUTER JOIN: Returns all records from left table and common records
+
+RIGHT OUTER JOIN: Returns all records from right table and common records
+
+FULL OUTER JOIN: Returns union of both tables
+
+SELECT Customer.Customer_Id, Customer.Customer_Name, Dept.Dept_Name
+FROM Customer INNER JOIN Dept
+ON Customer.Customer_Id=Dept.Customer_Id;
+
+SELECT Customer.Customer_Id, Dept.Customer_Id, Customer.Customer_Name, Dept.Dept_Name
+FROM Customer LEFT JOIN Dept
+ON Customer.Customer_Id=Dept.Customer_Id;
+
+SELECT Customer.Customer_Id, Dept.Customer_Id, Customer.Customer_Name, Dept.Dept_Name
+FROM Customer RIGHT JOIN Dept
+ON Customer.Customer_Id=Dept.Customer_Id;
+
+SELECT Customer.Customer_Id, Dept.Customer_Id, Customer.Customer_Name, Dept.Dept_Name
+FROM Customer FULL JOIN Dept
+ON Customer.Customer_Id=Dept.Customer_Id;

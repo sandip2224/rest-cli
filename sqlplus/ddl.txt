@@ -1,0 +1,35 @@
+DDL Commands
+------------
+
+1. CREATE:
+
+CREATE DATABASE my_database;
+
+2. DROP:
+
+DROP DATABASE my_database;
+DROP TABLE my_table;
+
+3. TRUNCATE:
+
+TRUNCATE TABLE my_table;
+
+4. ALTER:
+
+Used to add, delete or modify existing columns in an existing table.
+
+a. ALTER TABLE ADD: To add a new column
+
+ALTER TABLE my_table ADD (column_name1 datatype,column_name2 datatype...);
+
+b. ALTER TABLE DROP: To delete a column
+
+ALTER TABLE my_table DROP column_name1 datatype;
+
+c. ALTER TABLE MODIFY: TO modify the datatype of a column
+
+ALTER TABLE my_table MODIFY column_name1 datatype;
+
+
+
+

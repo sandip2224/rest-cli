@@ -1,0 +1,8 @@
+TRIGGERS
+--------
+
+CREATE OR REPLACE TRIGGER my_trig1
+AFTER INSERT OR UPDATE OR DELETE ON my_table1
+BEGIN
+   DBMS_OUTPUT.PUT_LINE('Insertion/updation/deletion detected');
+END;

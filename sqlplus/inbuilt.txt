@@ -1,0 +1,37 @@
+-- SELECT ascii('A') FROM dual;
+-- SELECT chr(65), chr(97) FROM dual;
+-- SELECT concat('Sandipan', ' Das') from dual;
+-- SELECT initcap('my name is sandipan das') FROM dual;
+-- SELECT instr('Wait Hello there my Hello world bros', 'Hello') from dual;
+-- SELECT length('Hello World') AS LEN from dual;
+-- SELECT lower('Sandipan DAS') from dual;
+-- SELECT upper('Sandipan DAS') from dual;
+-- SELECT lpad('Oracle', 10, '.') from dual;
+-- SELECT rpad('Oracle', 10, '.') from dual;
+-- SELECT ltrim('   ...Oracle   ') from dual;
+-- SELECT rtrim('   ...Oracle   ') from dual;
+-- SELECT replace('Hello my Hello brooo is lol Hello', 'Hello', 'Sandipan') from dual; 
+
+-- SELECT abs(-25) from dual;
+-- SELECT acos(.28) as Arc_Cosine FROM dual;
+-- SELECT asin(.28) as Arc_Sine FROM dual;
+-- SELECT atan(.6) as Arc_Tan FROM dual;
+-- SELECT floor(15.65) from dual;
+-- SELECT ceil(15.65) from dual;
+-- SELECT mod(11, 3) from dual;
+-- SELECT POWER(3, 2) from dual;
+-- SELECT ROUND(54.126, 2) from dual;
+-- SELECT TRUNC(54.126, 2) from dual;
+-- SELECT TRUNC(56.126, -1) from dual;
+
+-- SELECT ADD_MONTHS(CURRENT_DATE, 1) FROM dual;
+-- SELECT ADD_MONTHS(DATE'22-01-12', 1) FROM dual;
+-- SELECT EXTRACT(year FROM CURRENT_DATE) from dual;
+-- SELECT NEXT_DAY('31-Aug-18', 'SUN') from dual;
+-- SELECT EXTRACT(year FROM CURRENT_DATE) from dual;
+-- SELECT MONTHS_BETWEEN(date'22-05-16', date'22-01-16') from dual;
+
+
+
+
+
