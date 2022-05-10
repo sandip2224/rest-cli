@@ -1,3 +1,10 @@
+# Informed search problem, uses heuristics
+
+# F(n)=G(n)+H(n)
+
+# G(n)=Actual cost from start node to node n
+# H(n)=Estimated cost from n to goal node
+
 def aStarAlgo(start_node, stop_node):
     open_set = set(start_node)
     closed_set = set()
@@ -70,7 +77,6 @@ def heuristic(n):
         'D': 1,
         'E': 7,
         'G': 0,
-
     }
 
     return H_dist[n]
