@@ -1,29 +1,38 @@
+// Informed, heuristic search algo
+
 // C++ program to implement Best First Search using priority queue
+
+// Let OPEN be a pq containing initial state
+// LOOP
+// 	If OPEN is empty return failure
+// 	Node<-Remove top node from OPEN
+// 	If node is goal node, return path from initial to goal node
+// 	Else generate all successors of node and put newly generated nodes in OPEN in ascending order of heuristic values
+// END LOOP
+
 #include <bits/stdc++.h>
 using namespace std;
 typedef pair<int, int> pi;
 
-vector<vector<pi> > graph;
+vector<vector<pi>> graph;
 
-// Function for adding edges to graph
 void addedge(int x, int y, int cost)
 {
-	graph[x].push_back(make_pair(cost, y));
-	graph[y].push_back(make_pair(cost, x));
+	graph[x].push_back({cost, y});
+	graph[y].push_back({cost, x});
 }
 
-// Function For Implementing Best First Search
 // Gives output path having lowest cost
 void best_first_search(int source, int target, int n)
 {
 	vector<bool> visited(n, false);
 	// MIN HEAP priority queue
-	priority_queue<pi, vector<pi>, greater<pi> > pq;
-	// sorting in pq gets done by first value of pair
-	pq.push(make_pair(0, source));
+	priority_queue<pi, vector<pi>, greater<pi>> pq;
+	pq.push({0, source});
 	int s = source;
 	visited[s] = true;
-	while (!pq.empty()) {
+	while (!pq.empty())
+	{
 		int x = pq.top().second;
 		// Displaying the path having lowest cost
 		cout << x << " ";
@@ -31,24 +40,22 @@ void best_first_search(int source, int target, int n)
 		if (x == target)
 			break;
 
-		for (int i = 0; i < graph[x].size(); i++) {
-			if (!visited[graph[x][i].second]) {
+		for (int i = 0; i < graph[x].size(); i++)
+		{
+			if (!visited[graph[x][i].second])
+			{
 				visited[graph[x][i].second] = true;
-				pq.push(make_pair(graph[x][i].first,graph[x][i].second));
+				pq.push({graph[x][i].first, graph[x][i].second});
 			}
 		}
 	}
 }
 
-// Driver code to test above methods
 int main()
 {
 	// No. of Nodes
 	int v = 14;
 	graph.resize(v);
-
-	// The nodes shown in above example(by alphabets) are
-	// implemented using integers addedge(x,y,cost);
 	addedge(0, 1, 3);
 	addedge(0, 2, 6);
 	addedge(0, 3, 5);
@@ -66,7 +73,6 @@ int main()
 	int source = 0;
 	int target = 9;
 
-	// Function call
 	best_first_search(source, target, v);
 
 	return 0;
